@@ -1,8 +1,14 @@
-package com.eDoe.entity;
+package com.eDoe.user;
 
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.eDoe.role.Role;
 
 @Entity
 public class User {
@@ -13,12 +19,10 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	
 	@ManyToMany
-	private Set<Role> roles;	
-	
-	
-	
-	
+	private List<Role> roles;
+
 	public User() {
 	}
 	
@@ -47,17 +51,18 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Set<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 	@Override
 	public int hashCode() {
@@ -81,14 +86,18 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "{"+"id=" + this.getId() 
-		+ ", name=" + this.getName() 
-		+ ", email=" + this.getEmail() 
-		+ ", password=" + this.getPassword() 
-		+ ", roles=" + this.getRoles() + "}";
+		return "{"+"id= " + this.getId() 
+		+ ", name= " + this.getName() 
+		+ ", email= " + this.getEmail() 
+		+ ", roles= " + this.seeRoles();
 	}
 	
-	
-	
-	
+	private String seeRoles() {
+		String out = "";
+		for (Role role : roles) {
+			out += role.toString() + " \n";
+		}
+		out = out.trim();
+		return out;
+	}
 }
