@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.eDoe.user.enums.Classe;
+
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
@@ -18,9 +20,9 @@ public class UserService {
 		return repo.findAll();
 	}
 	
-	public User findById(Long id) throws ObjectNotFoundException{
+	public User findById(Long id) throws ObjectNotFoundException {
 		Optional<User> user = repo.findById(id);
-		return user.orElseThrow(() -> new ObjectNotFoundException("User not found!")	);
+		return user.orElseThrow(() -> new ObjectNotFoundException("User not found!"));
 	}
 	
 	public User post(User user){
@@ -36,7 +38,11 @@ public class UserService {
 	private void updateData(User newObj, User obj) {
 		newObj.setName(obj.getName());
 		newObj.setEmail(obj.getEmail());
+		newObj.setCelular(obj.getCelular());
+		newObj.setNumberIdentificationo(obj.getNumberIdentification());
 		newObj.setPassword(obj.getPassword());
+		newObj.setTipo(obj.getTipo());
+		newObj.setClasse(obj.getClasse());
 		newObj.setRoles(obj.getRoles());
 	}
 	

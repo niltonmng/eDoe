@@ -1,7 +1,6 @@
 package com.eDoe.user;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +30,7 @@ public class UserController {
 		return new ResponseEntity<User>(userService.findById(id), HttpStatus.OK);
 	}
 	
-	// PASSAR DENTRO DOS X-WWW-FORM-URLENCODED
+	// USE "X-WWW-FORM-URLENCODED" FORM ON POSTMAN TO PASS USER INFORMATION
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> post(User user){
 		return new ResponseEntity<User>(userService.post(user), HttpStatus.OK);
