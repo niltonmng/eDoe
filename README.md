@@ -32,3 +32,47 @@ Dentro da pasta do projeto rode os comandos abaixo via terminal.
 mvnw clean install package
 mvn spring-boot:run
 ```
+
+## Kubernetes
+It was built a single image container on a **VM**, where it was able to deploy the app and test the api running on other machine.
+### Install on your machine:
+
+```
+1. minikube
+2. kubectl
+3. dockertools
+4. Oracle VM Virtualbox
+```
+
+## Running with Kubernetes
+### 1. Build the app and the Docker image
+```
+eval $(minikube docker-env)
+./mvnw clean package
+docker build -t simple-crud:0.0.1 .
+
+```
+### 2. Run a Kubernetes deployment on the running Minikube cluster
+
+```
+kubectl run simple-crud --image simple-crud:0.0.1 --port 8080
+kubectl expose deployment simple-crud --type=NodePort
+```
+### 3. Test the app
+```
+curl $(minikube service simple-crud --url)/users/kubernetes
+```
+### 4. Create Deployment and Service YAML files for future repeatable deployments
+```
+kubectl run simple-crud --image simple-crud:0.0.1 --port 8080 -o yaml --dry-run \
+    > simple-crud-deployment.yaml
+kubectl expose deployment simple-crud --type=NodePort -o yaml --dry-run > simple-crud-svc.yaml
+```   
+### 5. Delete resources created for simple-crud
+```
+kubectl delete all -l run=simple-crud
+```
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
