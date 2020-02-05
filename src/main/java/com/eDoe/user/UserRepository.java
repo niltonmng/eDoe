@@ -19,8 +19,12 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	
 	User findByNameIgnoreCase(String name);
 	
-	User findByNumberIdentification(String numberIdentification);
+	User findByNumberIdentification(String NumberIdentification);
 	
 	List<User> findByNameContainingIgnoreCase(String name);
+	
+	
+	// nao funcionando ainda
+	//void deleteByNumberIdentification(String NumberIdentification);
 	
 }

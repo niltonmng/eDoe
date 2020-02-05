@@ -69,4 +69,12 @@ public class UserController {
 		return new ResponseEntity<User>(userService.putNumberIdentification(dto, numberIdentification), HttpStatus.OK);
 	}
 	
+	
+//	 nao funcionando ainda
+//	@RequestMapping(value = "/delete/{numberIdentification}", method = RequestMethod.DELETE)
+//	public ResponseEntity<Void> deleteByNumberIdentification(@PathVariable(value="numberIdentification") String numberIdentification) {
+//		this.userService.deletByNumberIdentification(numberIdentification);
+//		return new 	ResponseEntity<Void>(HttpStatus.OK);
+//	}
+	
 }

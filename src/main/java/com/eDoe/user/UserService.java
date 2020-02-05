@@ -85,5 +85,11 @@ public class UserService {
 	public List<User> findByNameContainingIgnoreCase(String name){
 		return repo.findByNameContainingIgnoreCase(name);
 	}
+	
+	
+//	 nao funcionando ainda
+//	public void deletByNumberIdentification(String numberIdentification) {
+//		repo.deleteByNumberIdentification(numberIdentification);
+//	}
 
 }
