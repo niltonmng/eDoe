@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -33,12 +32,8 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> post(@RequestBody UserDTO dto){
-		try {
-			User user = userService.post(dto);
-			return new ResponseEntity<User>(user, HttpStatus.OK);			
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		User user = userService.post(dto);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
