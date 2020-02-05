@@ -63,4 +63,57 @@ public class UserDTO {
 		return null;
 	}
 
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public String getNumberIdentification() {
+		return numberIdentification;
+	}
+
+	public void setNumberIdentification(String numberIdentification) {
+		this.numberIdentification = numberIdentification;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getClasse() {
+		return classe;
+	}
+
+	public void setClasse(String classe) {
+		this.classe = classe;
+	}
+
 }

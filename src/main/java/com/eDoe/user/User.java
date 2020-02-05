@@ -92,13 +92,15 @@ public class User {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((numberIdentification == null) ? 0 : numberIdentification.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -108,13 +110,17 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (id != other.id)
+		if (numberIdentification == null) {
+			if (other.numberIdentification != null)
+				return false;
+		} else if (!numberIdentification.equals(other.numberIdentification))
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return ("id= " + id + "\n, name= " + name + "\n, email= " + email + "\n, celular= " + celular + "\n, classe= " + classe
-				+ "\n, numberIdentification= " + numberIdentification + "\n, tipo= " + tipo + "\n").trim();
+		return ("id=" + id + ",name=" + name + ",email=" + email + ",celular=" + celular + ",classe=" + classe
+				+ ",numberIdentification=" + numberIdentification + ",tipo=" + tipo).trim();
 	}
 }

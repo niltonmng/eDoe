@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -25,7 +26,6 @@ public class UserController {
 		return new ResponseEntity<List<User>>(userService.findAll(), HttpStatus.OK);
 	}
 	
-	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> findById(@PathVariable Long id) throws ObjectNotFoundException{
 		return new ResponseEntity<User>(userService.findById(id), HttpStatus.OK);
@@ -33,7 +33,12 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> post(@RequestBody UserDTO dto){
-		return new ResponseEntity<User>(userService.post(dto), HttpStatus.OK);
+		try {
+			User user = userService.post(dto);
+			return new ResponseEntity<User>(user, HttpStatus.OK);			
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -41,11 +46,19 @@ public class UserController {
 		return new ResponseEntity<User>(userService.put(dto, id), HttpStatus.OK);
 	}
 	
-	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		this.userService.delete(id);
 		return new 	ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	// ===================== CUSTOMIZED METHODS ===================
+	
+	
+	@RequestMapping(value = "/identification/{numberIdentification}", method = RequestMethod.GET)
+	public ResponseEntity<User> findByNumberIdentification(@PathVariable(value="numberIdentification") String numberIdentification) {
+		User user = userService.findByNumberIdentification(numberIdentification);
+		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	
 }
