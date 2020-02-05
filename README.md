@@ -1,6 +1,6 @@
 ![Captura+de+tela+de+2019-08-26+16-27-24_upscaled_image_x4](https://user-images.githubusercontent.com/20418546/63717895-acca6f00-c81f-11e9-8ca9-52d5a4b4eb79.jpg)
 
-![captura](https://lh5.googleusercontent.com/S9_Vg-Hf4N6dqBP7MeTYJxP1M0QFWreYP1pCm7ub-L3s3GgCPhg8Y4WPeSm0pnxJthD0Sp3dH_HWaGVTFEJanP_2nbH9g-6nJjEaai_SBBOzMn991MxWs--HyMiNrhrvQ2WriWEP =250x250)
+![captura](https://lh5.googleusercontent.com/S9_Vg-Hf4N6dqBP7MeTYJxP1M0QFWreYP1pCm7ub-L3s3GgCPhg8Y4WPeSm0pnxJthD0Sp3dH_HWaGVTFEJanP_2nbH9g-6nJjEaai_SBBOzMn991MxWs--HyMiNrhrvQ2WriWEP)
 
 # eDoe
 # Descrição
