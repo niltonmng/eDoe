@@ -31,7 +31,6 @@ public class UserController {
 		return new ResponseEntity<User>(userService.findById(id), HttpStatus.OK);
 	}
 	
-	// USE "X-WWW-FORM-URLENCODED" FORM ON POSTMAN TO PASS USER INFORMATION
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> post(@RequestBody UserDTO dto){
 		return new ResponseEntity<User>(userService.post(dto), HttpStatus.OK);
