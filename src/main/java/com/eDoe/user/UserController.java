@@ -64,4 +64,9 @@ public class UserController {
 		return new ResponseEntity<List<User>> (userService.findByNameContainingIgnoreCase(name), HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/update/{numberIdentification}", method = RequestMethod.PUT)
+	public ResponseEntity<User> put(@PathVariable String numberIdentification, @RequestBody UserDTO dto) throws ObjectNotFoundException{
+		return new ResponseEntity<User>(userService.putNumberIdentification(dto, numberIdentification), HttpStatus.OK);
+	}
+	
 }

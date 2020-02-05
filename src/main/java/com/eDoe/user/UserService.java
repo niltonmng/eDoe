@@ -38,11 +38,18 @@ public class UserService {
 		return repo.save(newUser);
 	}
 	
+	public User putNumberIdentification(UserDTO dto, String numberIdentification) throws ObjectNotFoundException {
+		User newUser = this.findByNumberIdentification(numberIdentification);
+		User fromDto = dto.transformToUser();
+		this.updateData(newUser, fromDto);
+		return repo.save(newUser);
+	}
+	
 	private void updateData(User newObj, User obj) {
 		newObj.setName(obj.getName());
 		newObj.setEmail(obj.getEmail());
 		newObj.setCelular(obj.getCelular());
-		newObj.setNumberIdentificationo(obj.getNumberIdentification());
+		//newObj.setNumberIdentificationo(obj.getNumberIdentification()); a person must not change its identification number, meanwhile.
 		newObj.setPassword(obj.getPassword());
 		newObj.setTipo(obj.getTipo());
 		newObj.setClasse(obj.getClasse());
