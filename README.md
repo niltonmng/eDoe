@@ -10,10 +10,25 @@
   
   [Descrição completa do projeto](https://docs.google.com/document/d/e/2PACX-1vST2TI5lDbtMlv8rhFYJkYnrfgqzyWDv6DDvvAajz3_KK4tAs_UnAbYdI6oeMQA6jEHo5HwUAatHmd8/pub)
   
-  # Diagrama
+# Diagrama
   [Diagrama ER](https://www.lucidchart.com/invitations/accept/e59ce12a-a45c-4c78-995e-0984821c3a90)
   
-  # Pré requisitos
-   O Sistema Operacional usado foi o *Windows* e as tecnologias utilizadas foram a LP *Java*, *Spring Boot* e a API *Postman* para testar o serviço RESTful por meio do envio de requisições HTTP e da análise do seu retorno. 
+# Pré requisitos
+  * Uma IDE de sua preferência
+  * Postman
+  * Java 8
+  * Maven
+  * MySQL
+
+# Desenvolvimento
+
+   * O Sistema Operacional usado foi o *Windows* e as tecnologias utilizadas foram a LP *Java*, *Spring Boot* e a API *Postman* para testar o serviço RESTful por meio do envio de requisições HTTP e da análise do seu retorno. 
    
-   Utilizamos o *Spring JPA* para integrarmos os objetos Java em um banco de dados *MySQL*, possibilitando a persistência dos mesmos. A IDE utilizada foi o *STS IDE*.
+   * Utilizamos o *Spring JPA* para integrarmos os objetos Java em um banco de dados *MySQL*, possibilitando a persistência dos mesmos. A IDE utilizada foi o *STS IDE*.
+   
+   # Rodando o Projeto
+   Dentro da pasta do projeto rode os comandos abaixo via terminal.
+   ```
+   mvnw clean install package
+   mvn spring-boot:run
+   ```
