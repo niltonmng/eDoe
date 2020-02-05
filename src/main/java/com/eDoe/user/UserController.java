@@ -30,6 +30,9 @@ public class UserController {
 		return new ResponseEntity<User>(userService.findById(id), HttpStatus.OK);
 	}
 	
+	
+	// nao postar usuários com o mesmo numero de identificacao
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> post(@RequestBody UserDTO dto){
 		User user = userService.post(dto);
@@ -54,6 +57,11 @@ public class UserController {
 	public ResponseEntity<User> findByNumberIdentification(@PathVariable(value="numberIdentification") String numberIdentification) {
 		User user = userService.findByNumberIdentification(numberIdentification);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/name/{name}", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> getUsersByName(@PathVariable(value="name") String name) {
+		return new ResponseEntity<List<User>> (userService.findByNameContainingIgnoreCase(name), HttpStatus.OK);
 	}
 	
 }

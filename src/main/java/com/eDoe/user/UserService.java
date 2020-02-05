@@ -74,5 +74,9 @@ public class UserService {
 	public User findByNumberIdentification(String numberIdentification) {
 		return repo.findByNumberIdentification(numberIdentification);
 	}
+	
+	public List<User> findByNameContainingIgnoreCase(String name){
+		return repo.findByNameContainingIgnoreCase(name);
+	}
 
 }
