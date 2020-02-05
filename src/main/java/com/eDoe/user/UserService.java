@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eDoe.user.enums.Classe;
+import com.eDoe.user.enums.Tipo;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -25,13 +26,17 @@ public class UserService {
 		return user.orElseThrow(() -> new ObjectNotFoundException("User not found!"));
 	}
 	
-	public User post(User user){
+	public User post(UserDTO dto){
+		User user = dto.transformToUser();
+		user.setTipo(Tipo.RECEPTOR);
+		user.setClasse(Classe.ONG);
 		return repo.save(user);
 	}
 	
-	public User put(User user) throws ObjectNotFoundException{
-		User newUser = findById(user.getId());
-		this.updateData(newUser, user);
+	public User put(UserDTO dto, Long id) throws ObjectNotFoundException{
+		User newUser = findById(id);
+		User fromDto = dto.transformToUser();
+		this.updateData(newUser, fromDto);
 		return repo.save(newUser);
 	}
 	
@@ -41,9 +46,8 @@ public class UserService {
 		newObj.setCelular(obj.getCelular());
 		newObj.setNumberIdentificationo(obj.getNumberIdentification());
 		newObj.setPassword(obj.getPassword());
-		newObj.setTipo(obj.getTipo());
-		newObj.setClasse(obj.getClasse());
-		newObj.setRoles(obj.getRoles());
+		newObj.setTipo(Tipo.DOADOR);
+		newObj.setClasse(Classe.PESSOA_FISICA);
 	}
 	
 	public void delete(Long id) {

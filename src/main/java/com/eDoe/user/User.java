@@ -1,16 +1,10 @@
 package com.eDoe.user;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
-import com.eDoe.role.Role;
 import com.eDoe.user.enums.Classe;
 import com.eDoe.user.enums.Tipo;
 
@@ -25,22 +19,14 @@ public class User {
 	private String celular;
 	private String numberIdentification;
 	private String password;
-	
-	@Enumerated(EnumType.STRING)
-	private Tipo tipo;
-	
-	@Enumerated(EnumType.STRING)
+	private Tipo tipo;	
 	private Classe classe;
 	
-	// TALVEZ REMOVER ESTES PAPÉIS
-	@ManyToMany
-	private List<Role> roles;
-
 	public User() {
 	}
 
 	public User(String name, String email, String celular, String numberIdentification, String password, Tipo tipo,
-			Classe classe, List<Role> roles) {
+			Classe classe) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -49,7 +35,6 @@ public class User {
 		this.password = password;
 		this.tipo = tipo;
 		this.classe = classe;
-		this.roles = roles;
 	}
 
 	public Classe mudaClasse(String classe) {
@@ -98,13 +83,6 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
 	}
 	public String getCelular() {
 		return celular;
@@ -160,14 +138,6 @@ public class User {
 	@Override
 	public String toString() {
 		return ("id= " + id + "\n, name= " + name + "\n, email= " + email + "\n, celular= " + celular + "\n, classe= " + classe
-				+ "\n, numberIdentification= " + numberIdentification + "\n, tipo= " + tipo + "\n" + this.seeRoles()).trim();
-	}
-	private String seeRoles() {
-		String out = "";
-		for (Role role : roles) {
-			out += role.toString() + " \n";
-		}
-		out = out.trim();
-		return out;
+				+ "\n, numberIdentification= " + numberIdentification + "\n, tipo= " + tipo + "\n").trim();
 	}
 }
