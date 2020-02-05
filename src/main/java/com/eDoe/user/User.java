@@ -37,29 +37,6 @@ public class User {
 		this.classe = classe;
 	}
 
-	public Classe mudaClasse(String classe) {
-		switch (classe) {
-			case "PESSOA_FISICA": 
-				return Classe.PESSOA_FISICA;
-			case "IGREJA":
-				return Classe.IGREJA;
-			case "ORGAO_PUBLICO_MUNICIPAL":
-				return Classe.ORGAO_PUBLICO_MUNICIPAL;
-			case "ORGAO_PUBLICO_ESTADUAL":
-				return Classe.ORGAO_PUBLICO_ESTADUAL;
-			case "ORGAO_PUBLICO_FEDERAL":
-				return Classe.ORGAO_PUBLICO_FEDERAL;
-			case "ONG":
-				return Classe.ONG;
-			case "ASSOCIACAO":
-				return Classe.ASSOCIACAO;
-			case "SOCIEDADE":
-				return Classe.SOCIEDADE;
-		}
-		return null;
-	}
-
-
 	public long getId() {
 		return id;
 	}

@@ -28,8 +28,6 @@ public class UserService {
 	
 	public User post(UserDTO dto){
 		User user = dto.transformToUser();
-		user.setTipo(Tipo.RECEPTOR);
-		user.setClasse(Classe.ONG);
 		return repo.save(user);
 	}
 	
@@ -46,8 +44,8 @@ public class UserService {
 		newObj.setCelular(obj.getCelular());
 		newObj.setNumberIdentificationo(obj.getNumberIdentification());
 		newObj.setPassword(obj.getPassword());
-		newObj.setTipo(Tipo.DOADOR);
-		newObj.setClasse(Classe.PESSOA_FISICA);
+		newObj.setTipo(obj.getTipo());
+		newObj.setClasse(obj.getClasse());
 	}
 	
 	public void delete(Long id) {
