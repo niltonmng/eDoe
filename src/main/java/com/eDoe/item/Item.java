@@ -21,11 +21,11 @@ public class Item implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	@ManyToOne
+	@ManyToOne // this means that we have many items to one unique description
 	private Description description;
 	private int quantity;
 	private String tags;	
-	@ManyToOne
+	@ManyToOne 
 	private User user;
 	private Status status;
 	@Transient
@@ -43,7 +43,7 @@ public class Item implements Serializable {
 		this.tags = tags;
 		this.user = user;
 		this.status = status;
-		this.matchScore = matchScore;
+		this.matchScore = 0;
 	}
 
 	public long getId() {

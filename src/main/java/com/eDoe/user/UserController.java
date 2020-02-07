@@ -36,6 +36,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<User> post(@RequestBody UserDTO dto){
 		User user = userService.post(dto);
+		System.out.println(user.toString());
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 	

@@ -120,7 +120,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return ("id=" + id + ",name=" + name + ",email=" + email + ",celular=" + celular + ",classe=" + classe
-				+ ",numberIdentification=" + numberIdentification + ",tipo=" + tipo).trim();
+		return (this.getName() + "/" + this.getNumberIdentification() +
+				", " + this.getEmail() + ", " + this.getCelular() + ", status: " + this.getTipo()).trim();
 	}
 }
