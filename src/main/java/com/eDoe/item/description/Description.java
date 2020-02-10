@@ -1,4 +1,4 @@
-package com.eDoe.description;
+package com.eDoe.item.description;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

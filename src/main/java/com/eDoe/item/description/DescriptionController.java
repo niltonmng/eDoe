@@ -1,4 +1,4 @@
-package com.eDoe.description;
+package com.eDoe.item.description;
 
 import java.util.List;
 

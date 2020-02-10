@@ -1,4 +1,4 @@
-package com.eDoe.user.enums;
+package com.eDoe.item.enums;
 
 public enum Status {
 	

@@ -9,9 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
-import com.eDoe.description.Description;
+import com.eDoe.item.description.Description;
+import com.eDoe.item.enums.Status;
 import com.eDoe.user.User;
-import com.eDoe.user.enums.Status;
 
 @Entity
 public class Item implements Serializable {
@@ -24,7 +24,7 @@ public class Item implements Serializable {
 	@ManyToOne // this means that we have many items to one unique description
 	private Description description;
 	private int quantity;
-	private String tags;	
+	private String tags;
 	@ManyToOne 
 	private User user;
 	private Status status;
