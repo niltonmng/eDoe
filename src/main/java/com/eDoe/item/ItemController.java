@@ -31,10 +31,16 @@ public class ItemController {
 		return new ResponseEntity<Item> (itemService.findById(id), HttpStatus.OK);
 	}
 	
-	// errado o id passado no path da requisição, o método post deve apenas receber o item, resolver com ItemDTO
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	public ResponseEntity<Item> create(@RequestBody Item item, @PathVariable Long id) throws ObjectNotFoundException {
-		return new ResponseEntity<Item> (itemService.post(item,  id), HttpStatus.OK);
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Item> create(@RequestBody ItemDTO dto) throws ObjectNotFoundException {
+		Item item = itemService.post(dto);
+		return new ResponseEntity<Item> (item, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> create(@PathVariable Long id){
+		this.itemService.delete(id);
+		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
 }
