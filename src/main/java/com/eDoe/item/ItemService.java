@@ -9,8 +9,6 @@ import com.eDoe.item.description.Description;
 import com.eDoe.item.description.DescriptionService;
 import com.eDoe.item.enums.Status;
 import com.eDoe.user.User;
-import com.eDoe.user.UserDTO;
-import com.eDoe.user.UserRepository;
 import com.eDoe.user.UserService;
 
 import javassist.tools.rmi.ObjectNotFoundException;
