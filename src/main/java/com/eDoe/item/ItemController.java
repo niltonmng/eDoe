@@ -26,7 +26,7 @@ public class ItemController {
 	public ResponseEntity<List<Item>> findAll(){
 		return new ResponseEntity<List<Item>> (itemService.findAll(), HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Item> findById(@PathVariable Long id) throws ObjectNotFoundException {
 		Item item = itemService.findById(id);
@@ -55,7 +55,6 @@ public class ItemController {
 //	public ResponseEntity<List<Item>> findAllByStatus(@PathVariable String status) throws ObjectNotFoundException {
 //		return new ResponseEntity<List<Item>> (itemService.findAllByStatus(status), HttpStatus.OK);
 //	}
-	
 	
 	@RequestMapping(value = "/status", method = RequestMethod.GET)
 	public ResponseEntity<List<Item>> findAllByStatusOrderByQuantityDesc() throws ObjectNotFoundException {
