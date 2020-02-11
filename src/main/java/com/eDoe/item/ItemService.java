@@ -76,5 +76,20 @@ public class ItemService {
 		item.setMatchScore(newItem.getMatchScore());
 		item.setUser(newItem.getUser());
 	}
+	
+	
+	
+//	public List<Item> findAllByStatus(String status) {
+//		Status s = this.mudaStatus(status);
+//		return this.itemRepo.findAllByStatus(s);
+//	}
+	
+	public List<Item> findAllByStatusOrderByQuantityDesc(){
+		return this.itemRepo.findAllByStatusOrderByQuantityDesc(Status.DOACAO);
+	}
+	
+	public List<Item> findAllByStatusOrderByIdAsc(){
+		return this.itemRepo.findAllByStatusOrderByIdAsc(Status.DOACAO);
+	}
 
 }

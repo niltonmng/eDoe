@@ -106,6 +106,21 @@ public class Item implements Serializable {
 		return serialVersionUID;
 	}
 	
+	@Override
+	public String toString() {
+		return "<" + id + "> - <" + this.description.toString() + ">, tags: [" + this.tags() + "], quantidade: " + this.getQuantity();
+	}
+	
+	private String tags() {
+		String out = "";
+		String[] tags = this.getTags().split(",");
+		for (String s : tags) {
+			out += s + ", ";
+		}
+		out = out.substring(0, (out.length()-2));
+		return out;
+	}
+	
 	
 
 }
