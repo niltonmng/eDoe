@@ -17,30 +17,36 @@ import javassist.tools.rmi.ObjectNotFoundException;
 @Controller
 @RequestMapping("/item")
 public class ItemController {
-	
+
 	@Autowired
 	private ItemService itemService;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Item>> findAll(){
 		return new ResponseEntity<List<Item>> (itemService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Item> findById(@PathVariable Long id) throws ObjectNotFoundException {
 		return new ResponseEntity<Item> (itemService.findById(id), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Item> create(@RequestBody ItemDTO dto) throws ObjectNotFoundException {
 		Item item = itemService.post(dto);
 		return new ResponseEntity<Item> (item, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> create(@PathVariable Long id){
 		this.itemService.delete(id);
 		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Item> update(@PathVariable Long id, @RequestBody ItemDTO dto) throws ObjectNotFoundException{
+		Item item = this.itemService.put(dto, id);
+		return new ResponseEntity<Item>(item, HttpStatus.OK);			
 	}
 
 }

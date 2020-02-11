@@ -3,14 +3,13 @@ package com.eDoe.item;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 public class ItemDTO {
-	
+
 	private String description;
 	private int quantity;
 	private String tags;
 	private String status;
 	private long userId;
-	
-	
+
 	public ItemDTO(String description, int quantity, String tags, String status, long userId) throws ObjectNotFoundException {
 		super();
 		this.description = description;
