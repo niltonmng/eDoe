@@ -25,7 +25,6 @@ public enum Classe {
 				return c;
 			}
 		}
-		
 		throw new RuntimeException("Classe " + name + " não existe!");
 	}
 	

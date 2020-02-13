@@ -10,6 +10,7 @@ import com.eDoe.item.description.DescriptionService;
 import com.eDoe.item.enums.Status;
 import com.eDoe.user.User;
 import com.eDoe.user.UserService;
+import com.eDoe.user.enums.Tipo;
 
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -25,8 +26,27 @@ public class ItemService {
 	@Autowired
 	private UserService userService;
 	
-	public Item post(ItemDTO dto) throws ObjectNotFoundException{
+	public Item postDoacao(ItemDTO dto) throws ObjectNotFoundException {
 		Item item = this.transformToItem(dto);
+		User user = item.getUser();
+		if(!user.getTipo().equals(Tipo.DOADOR)) {
+			throw new RuntimeException("User is not a donator.");
+		}
+		if(!item.getStatus().equals(Status.DOACAO)) {
+			throw new RuntimeException("Item is not a Donation Type.");
+		}
+		return itemRepo.save(item);			
+	}
+	
+	public Item postNecessario(ItemDTO dto) throws ObjectNotFoundException {
+		Item item = this.transformToItem(dto);
+		User user = item.getUser();
+		if(!user.getTipo().equals(Tipo.RECEPTOR)) {
+			throw new RuntimeException("User is not a Receptor.");
+		}
+		if(!item.getStatus().equals(Status.NECESSARIO)) {
+			throw new RuntimeException("Item is not a Necessary Type.");
+		}
 		return itemRepo.save(item);
 	}
 	
@@ -77,12 +97,10 @@ public class ItemService {
 		item.setUser(newItem.getUser());
 	}
 	
-	
-	
-//	public List<Item> findAllByStatus(String status) {
-//		Status s = this.mudaStatus(status);
-//		return this.itemRepo.findAllByStatus(s);
-//	}
+	public List<Item> findAllByStatus(String status) {
+		Status s = this.mudaStatus(status);
+		return this.itemRepo.findAllByStatus(s);
+	}
 	
 	public List<Item> findAllByStatusOrderByQuantityDesc(){
 		return this.itemRepo.findAllByStatusOrderByQuantityDesc(Status.DOACAO);

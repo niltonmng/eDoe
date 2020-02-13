@@ -33,9 +33,15 @@ public class ItemController {
 		return new ResponseEntity<Item> (item, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Item> create(@RequestBody ItemDTO dto) throws ObjectNotFoundException {
-		Item item = itemService.post(dto);
+	@RequestMapping(value = "/donate",method = RequestMethod.POST)
+	public ResponseEntity<Item> createDonationItem(@RequestBody ItemDTO dto) throws ObjectNotFoundException {
+		Item item = itemService.postDoacao(dto);
+		return new ResponseEntity<Item> (item, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/necessary",method = RequestMethod.POST)
+	public ResponseEntity<Item> createNecessaryItem(@RequestBody ItemDTO dto) throws ObjectNotFoundException {
+		Item item = itemService.postNecessario(dto);
 		return new ResponseEntity<Item> (item, HttpStatus.OK);
 	}
 

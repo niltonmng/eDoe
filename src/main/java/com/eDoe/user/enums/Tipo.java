@@ -5,7 +5,6 @@ public enum Tipo {
 	DOADOR("DOADOR", "Doador"), 
 	RECEPTOR("Receptor", "RECEPTOR");
 	
-	
 	private String key;
 	private String name;
 	
@@ -13,15 +12,16 @@ public enum Tipo {
 		this.key = key;
 		this.name = name;
 	}
+	
 	public static Tipo fromName(String name) {
 		for(Tipo c: Tipo.values()) {
 			if(c.name.equalsIgnoreCase(name)) {
 				return c;
 			}
 		}
-		
 		throw new RuntimeException("Tipo " + name + " não existe!");
 	}
+
 	public static Tipo fromKey(String key) {
 		for (Tipo c : Tipo.values()) {
 			if(c.key.equalsIgnoreCase(key)) return c;
